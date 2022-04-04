@@ -4,24 +4,8 @@
     //display current date at top 
 var currentDateEl=document.querySelector("#currentDay");
 console.log("picked the date!");
-currentDateEl.textContent= moment().format('dddd')+ moment().format("MMMM Do"); 
+currentDateEl.textContent= moment().format('dddd')+","+"   "+moment().format("MMMM Do"); 
 
-
-/*var createDate =function (){
-var currentTimeSpan=$("<span>")
-console.log("span made");
-monthDate= moment().format("MMM Do YY") 
-currentDay= moment().format('dddd')
-.text(currentDay,monthDate);
-currentDateEl.appendChild(currentTimeSpan);
-}
-
-/*var createDateHeader= function(dateText, dateDisplay)
-    var currentDateEl=document.querySelector("#currentDay");
-    var dayAndDateEl= document.createElement(date);
-    var date= moment().format('dddd')+ moment().format("MMM Do YY")
-        .text(dateText);
-    currentDateEl.appendChild(dayAndDateEl);*/
 
 //WHEN I scroll down
  //insert some kinda scroll button
