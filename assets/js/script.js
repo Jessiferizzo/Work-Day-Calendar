@@ -1,3 +1,8 @@
+//get all elements with class description
+var timeBlockEvents = $(".description");
+console.log(timeBlockEvents);
+
+
 //THEN the current day is displayed at the top of the calendar
 //display current date at top 
 var currentDateEl=document.querySelector("#currentDay");
@@ -19,10 +24,6 @@ var checkTime = function () {
     //Get Current time
     var currentTime = moment("12:15 AM", ["h:mm A"]).format("HH:mm");
     console.log(currentTime);
-
-    //get all elements with class description
-    var timeBlockEvents = $(".description");
-    console.log(timeBlockEvents);
 
     //loop through description classes
     for (var i = 0 ; i < timeBlockEvents.length ; i++) {
@@ -56,70 +57,23 @@ console.log("time was checked!");
 setInterval(checkTime(), (1000 * 60) * 5);
 
 
-    /*if(timeNumber>= 9 &&  <= 17){
-        $(".hour").addClass("present");
-    }
-    elseif(hours < 9){
-        $(".hour").addClass("past");
-    }
-    else{
-        $(".hour").addClass("future");
-    }
-
-}
-//apply new class if time block is past/present/future time
-
-          /*if (moment().isAfter(time)){
-              timeDisplayed.addClass("past");
-          }
-          if (moment().
-          } else {
-            this.style.color = "";
-          }
-          if (moment().isAfter(time)) {
-            $(taskEl).addClass("list-group-item-danger");
-          } else if (Math.abs(moment().diff(time, "days")) <= 2) {
-            $(taskEl).addClass("list-group-item-warning");
-          }
-
-        });
-      });
-
 //WHEN I click into a time block
-//THEN I can enter an event
-   //insert form input 
-$('.time-block').on('click',function() {
-    
-    <form>
-    <div class="form-group">
-    <input type="text" class="form-control autocomplete="off">
-    </div>
-    </form>*/
+//THEN I can enter an event HTML DID IT
         
-
-
 //WHEN I click the save button for that time block
    //save button active 
-/*$("#task-form-modal .btn-save").click(function() {
-  // get form values
-  var taskText = $("#modalTaskDescription").val();
-  var taskDate = $("#modalDueDate").val();
 
-  if (taskText && taskDate) {
-    createTask(taskText, taskDate, "toDo");
+/*function textSubmit(event) {
+    event.preventDefault();
+    var textEvent = document.querySelector('.description');
+    var textEvent= textEvent.textContent
+    console.log(textEvent);
+}
+console.log(textSubmit);
 
-    // close modal
-    $("#task-form-modal").modal("hide");
-
-    // save in tasks array
-    tasks.toDo.push({
-      text: taskText,
-      date: taskDate
-    });
-
-    saveTasks();
-  }
-});*/
+  var submitButton= document.querySelector('.saveBtn')
+  submitButton.addEventListener('submit', textSubmit);
+  console.log("you clicked save!");
 
 //THEN the text for that event is saved in local storage
    //save textcontent to local storage
@@ -135,3 +89,8 @@ $('.time-block').on('click',function() {
   //tasks stay present on page after refresh without clearing*/
 /*var loadTasks = function() {
     tasks = JSON.parse(localStorage.getItem("tasks"));*/
+
+    $( ".saveBtn" ).submit(function( event ) {
+        alert( "Handler for .submit() called." );
+        event.preventDefault();
+      });
