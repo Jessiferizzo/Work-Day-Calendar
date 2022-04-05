@@ -22,7 +22,7 @@ currentDateEl.textContent= moment().format('dddd')+","+"   "+moment().format("MM
 //Change textarea background color based on time
 var checkTime = function () {
     //Get Current time
-    var currentTime = moment("12:15 AM", ["h:mm A"]).format("HH:mm");
+    var currentTime = moment().format("HH:mm");
     console.log(currentTime);
 
     //loop through description classes
@@ -40,15 +40,15 @@ var checkTime = function () {
         $(timeBlockEvents[i].id).removeClass(".present .past .future");
 
         // apply new class if task is present/past/future
-         if (elementId < currentTime) {
+        if (currentTime.isAfter(elementId) && elementId.isBefore(currentTime)) {
+            $(newId).addClass("present");
+            console.log("it's the present")
+        } else if (elementId < currentTime) {
             $(newId).addClass("past");
             console.log("its the past");
-        } else if (elementId > currentTime) {
+        } else {
             $(newId).addClass("future");
             console.log("its the future!)");
-        } else {
-            $(newId).addClass("present");
-            console.log("it's present!");
         }
     }
 }
@@ -62,6 +62,16 @@ setInterval(checkTime(), (1000 * 60) * 5);
         
 //WHEN I click the save button for that time block
    //save button active 
+     // saveBtn click listener 
+    $(".saveBtn").on("click", function () {
+        // Get nearby values of the description in JQuery, how does this work//
+        var text = $(this).siblings(".description").val();
+        var time = $(this).parent().attr("id");
+
+        // save event to local storage
+        localStorage.setItem(time, text);
+    })
+    console.log("you saved it!");
 
 /*function textSubmit(event) {
     event.preventDefault();
@@ -89,8 +99,3 @@ console.log(textSubmit);
   //tasks stay present on page after refresh without clearing*/
 /*var loadTasks = function() {
     tasks = JSON.parse(localStorage.getItem("tasks"));*/
-
-    $( ".saveBtn" ).submit(function( event ) {
-        alert( "Handler for .submit() called." );
-        event.preventDefault();
-      });
