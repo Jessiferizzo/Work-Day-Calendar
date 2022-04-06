@@ -1,21 +1,9 @@
-var tasksIdCounter=0;
+$(document).ready(function () {
 
-var taskInput = document.querySelector(".description").value;
-console.log(taskInput);
 
 //get all elements with class description
 var timeBlockEvents = $(".description");
 console.log(timeBlockEvents);
-
-
-
-var resetTasks = function(taskDataObj) {
-    var listItemEl = document.querySelector(".description");
-    listItemEl.classname="text area";
-var taskDataObj=taskInput
-taskDataObj = tasksIdCounter;
-tasks.push(taskDataObj);
-}
 
 
 //THEN the current day is displayed at the top of the calendar
@@ -79,7 +67,7 @@ setInterval(checkTime(), (1000 * 60) * 5);
     // taken the change from the parent html id attribute
     var time = $(this).parent().attr("id"); 
     //set items in local storage.
-    localStorage.setItem(text,time);
+    localStorage.setItem(time,text);
   });
 
   //get items from localStorage when page reloads
@@ -92,4 +80,5 @@ setInterval(checkTime(), (1000 * 60) * 5);
       $("#hour15 .description").val(localStorage.getItem("hour15"));
       $("#hour16 .description").val(localStorage.getItem("hour16"));
       $("#hour17 .description").val(localStorage.getItem("hour17"));
-  
+
+});
