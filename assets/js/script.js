@@ -3,9 +3,6 @@ var tasksIdCounter=0;
 var taskInput = document.querySelector(".description").value;
 console.log(taskInput);
 
-
-//create array for tasks events
-var tasks=[];
 //get all elements with class description
 var timeBlockEvents = $(".description");
 console.log(timeBlockEvents);
@@ -71,38 +68,28 @@ console.log("time was checked!");
 // checkTime every 5 minutes
 setInterval(checkTime(), (1000 * 60) * 5);
 
-//function to store items to local storage
- var saveTasks = function() {
-    var taskInput = document.querySelector(".description").value;
-    console.log(taskInput);
-localStorage.setItem("tasks", JSON.stringify(taskInput));
-};
-
-//function to retrieve items from local storage and set back 
-var loadTasks = function() {
-    var savedTasks = localStorage.getItem("tasks");
-    // if there are no tasks, set tasks to an empty array and return out of the function
-    if (!savedTasks) {
-      return false;
-    }
-    console.log("Saved tasks found!");
-    // else, load up saved tasks
-  
-    // parse into array of objects
-    savedTasks = JSON.parse(savedTasks);
-
-    // loop through savedTasks array
-    for (var i = 0; i < savedTasks.length; i++) {
-    // pass each task object into the reset task function
-    resetTasks(savedTasks[i]);
-  }
-
-  };
-  
-
 //listener event for save button click sends to local storage
-  $('.saveBtn' ).on( "click", function( event ) {
+  $('.saveBtn' ).on( "click", function(event) {
     event.preventDefault();
     console.log("Saved Button Clicked!");
-    saveTasks();
+    //get nearby values.
+    console.log(this);
+     // taken the change from the sibling html description attribute
+    var text = $(this).siblings(".description").val(); 
+    // taken the change from the parent html id attribute
+    var time = $(this).parent().attr("id"); 
+    //set items in local storage.
+    localStorage.setItem(text,time);
   });
+
+  //get items from localStorage when page reloads
+      $("#hour9 .description").val(localStorage.getItem("hour9"));
+      $("#hour10 .description").val(localStorage.getItem("hour10"));
+      $("#hour11 .description").val(localStorage.getItem("hour11"));
+      $("#hour12 .description").val(localStorage.getItem("hour12"));
+      $("#hour13 .description").val(localStorage.getItem("hour13"));
+      $("#hour14 .description").val(localStorage.getItem("hour14"));
+      $("#hour15 .description").val(localStorage.getItem("hour15"));
+      $("#hour16 .description").val(localStorage.getItem("hour16"));
+      $("#hour17 .description").val(localStorage.getItem("hour17"));
+  
