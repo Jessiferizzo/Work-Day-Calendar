@@ -1,6 +1,24 @@
+var tasksIdCounter=0;
+
+var taskInput = document.querySelector(".description").value;
+console.log(taskInput);
+
+
+//create array for tasks events
+var tasks=[];
 //get all elements with class description
 var timeBlockEvents = $(".description");
 console.log(timeBlockEvents);
+
+
+
+var resetTasks = function(taskDataObj) {
+    var listItemEl = document.querySelector(".description");
+    listItemEl.classname="text area";
+var taskDataObj=taskInput
+taskDataObj = tasksIdCounter;
+tasks.push(taskDataObj);
+}
 
 
 //THEN the current day is displayed at the top of the calendar
@@ -53,3 +71,38 @@ console.log("time was checked!");
 // checkTime every 5 minutes
 setInterval(checkTime(), (1000 * 60) * 5);
 
+//function to store items to local storage
+ var saveTasks = function() {
+    var taskInput = document.querySelector(".description").value;
+    console.log(taskInput);
+localStorage.setItem("tasks", JSON.stringify(taskInput));
+};
+
+//function to retrieve items from local storage and set back 
+var loadTasks = function() {
+    var savedTasks = localStorage.getItem("tasks");
+    // if there are no tasks, set tasks to an empty array and return out of the function
+    if (!savedTasks) {
+      return false;
+    }
+    console.log("Saved tasks found!");
+    // else, load up saved tasks
+  
+    // parse into array of objects
+    savedTasks = JSON.parse(savedTasks);
+
+    // loop through savedTasks array
+    for (var i = 0; i < savedTasks.length; i++) {
+    // pass each task object into the reset task function
+    resetTasks(savedTasks[i]);
+  }
+
+  };
+  
+
+//listener event for save button click sends to local storage
+  $('.saveBtn' ).on( "click", function( event ) {
+    event.preventDefault();
+    console.log("Saved Button Clicked!");
+    saveTasks();
+  });
