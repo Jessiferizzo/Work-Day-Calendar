@@ -63,13 +63,12 @@ setInterval(checkTime(), (1000 * 60) * 5);
     //get nearby values.
     console.log(this);
      // 
-    var text = $(this).prev().val(); 
+    var text = $(this).siblings(".description").val();
     console.log(text); 
-    //
-    var time = $(this).prev().previousSibling
+    var time = $(this).parent().attr("id");
     console.log(time);
     //set items in local storage.
-    localStorage.setItem(time,text);
+    localStorage.setItem(time,text); /* time aka KEY = row id */ /* text=text in the textarea */
   });
 
   //get items from localStorage when page reloads
