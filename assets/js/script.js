@@ -63,9 +63,11 @@ setInterval(checkTime(), (1000 * 60) * 5);
     //get nearby values.
     console.log(this);
      // taken the change from the sibling html description attribute
-    var text = $(this).siblings(".description").val(); 
+    var text = $(this).prev().val(); 
+    console.log(text);
     // taken the change from the parent html id attribute
-    var time = $(this).parent().attr("id"); 
+    var time = $(this).
+    console.log(time);
     //set items in local storage.
     localStorage.setItem(time,text);
   });
